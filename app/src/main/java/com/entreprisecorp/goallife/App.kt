@@ -27,7 +27,7 @@ class App : Application() {
         val context: Context = App.applicationContext()
         val sharedPreferences = getSharedPreferences("Goal", Context.MODE_PRIVATE)
 
-        if(sharedPreferences.getString("NAME","" ) == ""){
+        if(sharedPreferences.getString("NAME", null) == null){
             val intent = Intent(this, LogInActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
