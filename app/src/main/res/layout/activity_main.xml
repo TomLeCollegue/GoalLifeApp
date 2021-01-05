@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/almostWhite"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="@color/white">
+    tools:context=".MainActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -17,21 +17,25 @@
             android:name="com.entreprisecorp.goallife.fragments.SettingsFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="80dp"
             android:layout_marginBottom="70dp" />
 
         <LinearLayout
             android:id="@+id/top_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="20dp"
-            android:background="@color/white">
+            android:layout_margin="10dp"
+            android:background="@drawable/rect_white"
+            android:elevation="20dp">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/mainImage"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="15dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="15dp"
                 app:srcCompat="@drawable/calendar"
                 app:tint="@color/darkGrey" />
 
@@ -51,15 +55,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:background="@drawable/rect_white"
             android:elevation="20dp"
-            android:background="@color/white">
+            android:orientation="vertical">
 
             <nl.joery.animatedbottombar.AnimatedBottomBar
                 android:id="@+id/bottom_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@drawable/rect_white"
                 app:abb_indicatorAppearance="round"
                 app:abb_indicatorHeight="4dp"
                 app:abb_indicatorMargin="16dp"

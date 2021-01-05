@@ -10,7 +10,8 @@
     <color name="blueMain">#5671A6</color>
     <color name="blueSecond">#2A4B8C</color>
     <color name="blueThird">#022873</color>
-    <color name="almostWhite">#D9D5D2</color>
+    <color name="almostWhiteBackup">#D9D5D2</color>
+    <color name="almostWhite">#5671A6</color>
     <color name="darkGrey">#404040</color>
 
 

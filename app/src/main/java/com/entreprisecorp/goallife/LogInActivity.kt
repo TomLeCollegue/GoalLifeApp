@@ -1,6 +1,7 @@
 package com.entreprisecorp.goallife
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -21,6 +22,12 @@ class LogInActivity : AppCompatActivity() {
             val editor = sharedPreferences.edit()
             editor.putString("NAME", name)
             editor.apply()
+
+            if(name != ""){
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+            }
         }
 
 

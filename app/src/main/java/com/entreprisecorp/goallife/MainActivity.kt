@@ -15,20 +15,25 @@ class MainActivity : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("Goal", Context.MODE_PRIVATE)
 
+        setFragment(TodayFragment())
+
         bottom_bar.onTabSelected = {
             when (it.id) {
 
                 R.id.menu1 -> {
-                    title_home.text = "Mes Objectifs"
+                    title_home.text = "Mes objectifs"
                     setFragment(TodayFragment())
+                    mainImage.setImageResource(R.drawable.clipboard)
                 }
                 R.id.menu2 -> {
                     title_home.text = "Aujourd'hui"
                     setFragment(TodayFragment())
+                    mainImage.setImageResource(R.drawable.calendar)
                 }
                 R.id.menu3 -> {
                     title_home.text = "Paramètres"
                     setFragment(SettingsFragment())
+                    mainImage.setImageResource(R.drawable.settings)
                 }
 
             }
