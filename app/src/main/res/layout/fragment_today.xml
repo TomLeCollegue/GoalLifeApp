@@ -18,9 +18,11 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview task"
+            android:id="@+id/recyclerviewTask"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
