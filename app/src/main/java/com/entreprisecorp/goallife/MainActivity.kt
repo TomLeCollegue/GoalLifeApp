@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.entreprisecorp.goallife.fragments.SettingsFragment
+import com.entreprisecorp.goallife.fragments.TaskFragment
 import com.entreprisecorp.goallife.fragments.TodayFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.menu1 -> {
                     title_home.text = "Mes objectifs"
-                    setFragment(TodayFragment())
+                    setFragment(TaskFragment())
                     mainImage.setImageResource(R.drawable.clipboard)
                 }
                 R.id.menu2 -> {
