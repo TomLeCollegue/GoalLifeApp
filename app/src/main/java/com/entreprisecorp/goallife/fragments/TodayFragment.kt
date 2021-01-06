@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.entreprisecorp.goallife.R
 import com.entreprisecorp.goallife.Task
 import com.entreprisecorp.goallife.TaskAdapter
+import com.entreprisecorp.goallife.TodayAdapter
 import kotlinx.android.synthetic.main.fragment_today.*
 import kotlinx.android.synthetic.main.fragment_today.view.*
 
-class TodayFragment : Fragment(), TaskAdapter.OnItemClickListener {
+class TodayFragment : Fragment(), TodayAdapter.OnItemClickListener {
     private val listTask = ArrayList<Task>()
-    private val adapterTask  = TaskAdapter(listTask, this)
+    private val adapterTask  = TodayAdapter(listTask, this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,11 +24,11 @@ class TodayFragment : Fragment(), TaskAdapter.OnItemClickListener {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_today, container, false)
 
-        listTask.add(Task("testO", "testDef", Task.Frequency.WEEKLY))
-        listTask.add(Task("testO", "testDef", Task.Frequency.MONTHLY))
-        listTask.add(Task("testO", "testDef", Task.Frequency.DAILY))
-        listTask.add(Task("testO", "testDef", Task.Frequency.MONTHLY))
-        listTask.add(Task("testO", "testDef", Task.Frequency.WEEKLY))
+        listTask.add(Task("Faire une séance de sport", "Jambes + les bibis", Task.Frequency.WEEKLY))
+        listTask.add(Task("Lire un livre", "", Task.Frequency.MONTHLY))
+        listTask.add(Task("Regarder les mails", "", Task.Frequency.DAILY))
+        listTask.add(Task("Appeller mamie", "le soir avant 19h", Task.Frequency.MONTHLY))
+        listTask.add(Task("Appeller les darons", "avant 20 heures", Task.Frequency.WEEKLY))
 
         Toast.makeText(context, listTask[0].definition, Toast.LENGTH_SHORT).show()
         adapterTask.notifyDataSetChanged()
