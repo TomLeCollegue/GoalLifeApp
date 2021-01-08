@@ -1,10 +1,13 @@
 package com.entreprisecorp.goallife
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.task_list_item.view.*
 import kotlinx.android.synthetic.main.task_today_item.view.*
@@ -13,7 +16,8 @@ import kotlinx.android.synthetic.main.task_today_item.view.taskName
 
 class TodayAdapter(
     private val list: List<Task>,
-    private val listener: OnItemClickListener
+    private val listener: OnItemClickListener,
+    private val context: Context
 ) :
     RecyclerView.Adapter<TodayAdapter.TaskViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -37,6 +41,8 @@ class TodayAdapter(
                 holder.taskImage.setImageResource(R.drawable.monthly)
             }
         }
+        holder.checkBox.isChecked = false
+
     }
     override fun getItemCount() = list.size
     inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
@@ -45,8 +51,15 @@ class TodayAdapter(
         val taskImage : ImageView = itemView.imageViewItemToday
         val taskName: TextView = itemView.taskName
         val taskDef: TextView = itemView.taskDef
+        val checkBox : CheckBox = itemView.checkboxTask
+
+
         init {
             itemView.setOnClickListener(this)
+            itemView.checkboxTask.setOnClickListener(){
+                list[adapterPosition].definition = "blabla"
+                notifyDataSetChanged()
+            }
         }
         override fun onClick(v: View?) {
             val position = adapterPosition

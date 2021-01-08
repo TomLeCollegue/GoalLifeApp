@@ -7,16 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.entreprisecorp.goallife.R
-import com.entreprisecorp.goallife.Task
-import com.entreprisecorp.goallife.TaskAdapter
-import com.entreprisecorp.goallife.TodayAdapter
+import com.entreprisecorp.goallife.*
 import kotlinx.android.synthetic.main.fragment_today.*
 import kotlinx.android.synthetic.main.fragment_today.view.*
 
 class TodayFragment : Fragment(), TodayAdapter.OnItemClickListener {
     private val listTask = ArrayList<Task>()
-    private val adapterTask  = TodayAdapter(listTask, this)
+    private val adapterTask  = TodayAdapter(listTask, this, App.applicationContext())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
