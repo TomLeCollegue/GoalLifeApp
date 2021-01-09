@@ -20,10 +20,6 @@ class TodayFragment : Fragment(), TodayAdapter.OnItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_today, container, false)
-
-
-
-        Toast.makeText(context, App.listTask[0].definition, Toast.LENGTH_SHORT).show()
         adapterTask.notifyDataSetChanged()
         view.recyclerviewTask.adapter = adapterTask
         view.recyclerviewTask.layoutManager = LinearLayoutManager(context)
