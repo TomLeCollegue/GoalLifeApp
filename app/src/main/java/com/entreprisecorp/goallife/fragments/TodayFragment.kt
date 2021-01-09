@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.fragment_today.*
 import kotlinx.android.synthetic.main.fragment_today.view.*
 
 class TodayFragment : Fragment(), TodayAdapter.OnItemClickListener {
-    private val listTask = ArrayList<Task>()
-    private val adapterTask  = TodayAdapter(listTask, this, App.applicationContext())
+
+    private val adapterTask  = TodayAdapter(App.listTask, this, App.applicationContext())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,13 +21,9 @@ class TodayFragment : Fragment(), TodayAdapter.OnItemClickListener {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_today, container, false)
 
-        listTask.add(Task("Faire une séance de sport", "Jambes + les bibis", Task.Frequency.WEEKLY))
-        listTask.add(Task("Lire un livre", "", Task.Frequency.MONTHLY))
-        listTask.add(Task("Regarder les mails", "", Task.Frequency.DAILY))
-        listTask.add(Task("Appeller mamie", "le soir avant 19h", Task.Frequency.MONTHLY))
-        listTask.add(Task("Appeller les darons", "avant 20 heures", Task.Frequency.WEEKLY))
 
-        Toast.makeText(context, listTask[0].definition, Toast.LENGTH_SHORT).show()
+
+        Toast.makeText(context, App.listTask[0].definition, Toast.LENGTH_SHORT).show()
         adapterTask.notifyDataSetChanged()
         view.recyclerviewTask.adapter = adapterTask
         view.recyclerviewTask.layoutManager = LinearLayoutManager(context)
@@ -39,7 +35,7 @@ class TodayFragment : Fragment(), TodayAdapter.OnItemClickListener {
 
     override fun onItemClick(position: Int) {
         Toast.makeText(context, "Item $position clicked", Toast.LENGTH_SHORT).show()
-        val clickedItem = listTask[position]
+        val clickedItem = App.listTask[position]
         clickedItem.definition = "Clicked"
         adapterTask.notifyItemChanged(position)
     }

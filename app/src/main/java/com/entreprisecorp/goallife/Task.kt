@@ -2,9 +2,9 @@ package com.entreprisecorp.goallife
 
 public class Task (textObjective : String, textDefinition : String, frequency : Frequency) {
 
-    val objective : String = textObjective
+    var objective : String = textObjective
     var definition : String = textDefinition
-    val frequency : Frequency = frequency
+    var frequency : Frequency = frequency
     val done : Boolean = false
 
     enum class Frequency {

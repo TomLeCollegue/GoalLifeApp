@@ -17,6 +17,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
+import com.entreprisecorp.goallife.App
 import com.entreprisecorp.goallife.R
 import com.entreprisecorp.goallife.Task
 import com.entreprisecorp.goallife.TaskAdapter
@@ -26,8 +27,8 @@ import kotlinx.android.synthetic.main.pop_up_layout.view.*
 
 
 class TaskFragment : Fragment(), TaskAdapter.OnItemClickListener {
-    private val listTask = ArrayList<Task>()
-    private val adapterTask  = TaskAdapter(listTask, this)
+
+    private val adapterTask  = TaskAdapter(App.listTask, this)
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreateView(
@@ -37,13 +38,8 @@ class TaskFragment : Fragment(), TaskAdapter.OnItemClickListener {
         val view = inflater.inflate(R.layout.fragment_task, container, false)
 
 
-        listTask.add(Task("Faire une séance de sport", "Jambes + les bibis", Task.Frequency.WEEKLY))
-        listTask.add(Task("Lire un livre", "", Task.Frequency.MONTHLY))
-        listTask.add(Task("Regarder les mails", "", Task.Frequency.DAILY))
-        listTask.add(Task("Appeller mamie", "le soir avant 19h", Task.Frequency.MONTHLY))
-        listTask.add(Task("Appeller les darons", "avant 20 heures", Task.Frequency.WEEKLY))
 
-        Toast.makeText(context, listTask[0].definition, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, App.listTask[0].definition, Toast.LENGTH_SHORT).show()
         adapterTask.notifyDataSetChanged()
         view.recyclerviewTask.adapter = adapterTask
         view.recyclerviewTask.layoutManager = LinearLayoutManager(context)
@@ -57,7 +53,7 @@ class TaskFragment : Fragment(), TaskAdapter.OnItemClickListener {
     }
     override fun onItemClick(position: Int) {
         Toast.makeText(context, "Item $position clicked", Toast.LENGTH_SHORT).show()
-        val clickedItem = listTask[position]
+        val clickedItem = App.listTask[position]
         clickedItem.definition = "Clicked"
         adapterTask.notifyItemChanged(position)
     }
@@ -73,11 +69,29 @@ class TaskFragment : Fragment(), TaskAdapter.OnItemClickListener {
         viewP.elevation = 5.0F;
         window.contentView = viewP
 
+        val task = Task("","", Task.Frequency.DAILY)
         viewP.buttonAdd.setOnClickListener(){
-            window.dismiss()
-            val task = Task(viewP.nameText.text.toString(), viewP.deffText.text.toString(), Task.Frequency.WEEKLY)
-            listTask += task
+            task.objective =  viewP.nameText.text.toString()
+            task.definition = viewP.deffText.text.toString()
+
+            App.listTask += task
             adapterTask.notifyDataSetChanged()
+            window.dismiss()
+        }
+
+
+        viewP.radiogroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.radioButton -> {
+                    task.frequency = Task.Frequency.DAILY
+                }
+                R.id.radioButton2 -> {
+                    task.frequency = Task.Frequency.WEEKLY
+                }
+                else -> {
+                    task.frequency = Task.Frequency.MONTHLY
+                }
+            }
         }
 
         viewP.backFrame.setOnClickListener(){

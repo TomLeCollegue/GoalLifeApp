@@ -8,15 +8,23 @@ class App : Application() {
 
     init {
         instance = this
+        listTask.add(Task("Faire une séance de sport", "Jambes + les bibis", Task.Frequency.WEEKLY))
+        listTask.add(Task("Lire un livre", "", Task.Frequency.MONTHLY))
+        listTask.add(Task("Regarder les mails", "", Task.Frequency.DAILY))
+        listTask.add(Task("Appeller mamie", "le soir avant 19h", Task.Frequency.MONTHLY))
+        listTask.add(Task("Appeller les darons", "avant 20 heures", Task.Frequency.WEEKLY))
     }
 
     companion object {
         private var instance: App? = null
+        val listTask = ArrayList<Task>()
 
         fun applicationContext() : Context {
             return instance!!.applicationContext
         }
     }
+
+
 
     override fun onCreate() {
         super.onCreate()
