@@ -35,11 +35,11 @@ class TaskFragment : Fragment(), TaskAdapter.OnItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_task, container, false)
-        
-        adapterTask.notifyDataSetChanged()
+
         view.recyclerviewTask.adapter = adapterTask
         view.recyclerviewTask.layoutManager = LinearLayoutManager(context)
         view.recyclerviewTask.setHasFixedSize(true)
+        adapterTask.notifyDataSetChanged()
 
         view.buttonAddTast.setOnClickListener(){
             showPopup(view)

@@ -6,7 +6,9 @@ import android.content.Intent
 
 class App : Application() {
 
+
     init {
+
         instance = this
     }
 
@@ -21,6 +23,7 @@ class App : Application() {
 
 
 
+
     override fun onCreate() {
         super.onCreate()
         // initialize for any
@@ -29,9 +32,6 @@ class App : Application() {
         // example: SharedPreferences etc...
         val context: Context = App.applicationContext()
         val sharedPreferences = getSharedPreferences("Goal", Context.MODE_PRIVATE)
-
-        val db =  DataBaseHelper(context)
-        listTask = db.readData()
 
         if(sharedPreferences.getString("NAME", null) == null){
             val intent = Intent(this, LogInActivity::class.java)

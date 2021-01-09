@@ -11,6 +11,8 @@ class LogInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
+        val db =  DataBaseHelper(App.applicationContext())
+        db.readData()
 
 
         val sharedPreferences = getSharedPreferences("Goal", Context.MODE_PRIVATE)

@@ -29,6 +29,7 @@ class TodayAdapter(
         val currentItem = list[position]
         holder.taskName.text = currentItem.objective
         holder.taskDef.text = currentItem.definition
+        holder.taskDate.text = currentItem.done
 
         when (currentItem.frequency) {
             Task.Frequency.DAILY -> {
@@ -41,7 +42,7 @@ class TodayAdapter(
                 holder.taskImage.setImageResource(R.drawable.monthly)
             }
         }
-        holder.checkBox.isChecked = false
+        
 
     }
     override fun getItemCount() = list.size
@@ -51,12 +52,13 @@ class TodayAdapter(
         val taskImage : ImageView = itemView.imageViewItemToday
         val taskName: TextView = itemView.taskName
         val taskDef: TextView = itemView.taskDef
-        val checkBox : CheckBox = itemView.checkboxTask
+        val checkBox : ImageView = itemView.buttonDone
+        val taskDate : TextView = itemView.textDate
 
 
         init {
             itemView.setOnClickListener(this)
-            itemView.checkboxTask.setOnClickListener(){
+            itemView.buttonDone.setOnClickListener(){
                 list[adapterPosition].definition = "blabla"
                 notifyDataSetChanged()
             }

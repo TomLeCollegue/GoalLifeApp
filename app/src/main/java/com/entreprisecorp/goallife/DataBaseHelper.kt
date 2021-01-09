@@ -26,7 +26,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, DATABASEN
 
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val createTable = "CREATE TABLE " + TABLENAME + " (" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_NAME + " VARCHAR(256)," + COL_DEF + " VARCHAR(256)," + COL_DONE + " DATE, " + COL_FREQUENCY + " VARCHAR(256))"
+        val createTable = "CREATE IF NOT EXISTS TABLE " + TABLENAME + " (" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_NAME + " VARCHAR(256)," + COL_DEF + " VARCHAR(256)," + COL_DONE + " VARCHAR(256), " + COL_FREQUENCY + " VARCHAR(256))"
         db?.execSQL(createTable)
     }
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -52,6 +52,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, DATABASEN
     }
 
     fun readData(): ArrayList<Task> {
+        App.listTask.clear()
         val list: ArrayList<Task> = ArrayList()
         val db = this.readableDatabase
         val query = "Select * from $TABLENAME"
@@ -61,6 +62,8 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, DATABASEN
                 val task = Task("","",Task.Frequency.WEEKLY)
                 task.objective = result.getString(result.getColumnIndex(COL_NAME))
                 task.definition = result.getString(result.getColumnIndex(COL_DEF)).toString()
+                task.done = result.getString(result.getColumnIndex(COL_DONE)).toString()
+                task.id = result.getString(result.getColumnIndex(COL_ID)).toInt()
 
                 when(result.getString(result.getColumnIndex(COL_FREQUENCY)).toString()){
                     "DAILY" ->{
