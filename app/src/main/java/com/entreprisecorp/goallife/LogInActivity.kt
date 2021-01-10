@@ -1,11 +1,15 @@
 package com.entreprisecorp.goallife
 
+import android.app.job.JobInfo
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 
 class LogInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,9 +37,6 @@ class LogInActivity : AppCompatActivity() {
             }
         }
 
-
-
-
-
     }
+
 }

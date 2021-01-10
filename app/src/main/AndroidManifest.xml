@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.entreprisecorp.goallife">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name= "android.permission.SET_ALARM"/>
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -21,9 +23,11 @@
         <activity android:name=".MainActivity">
         </activity>
 
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <receiver android:name=".Notofication_receiver"/>
     </application>
 
 </manifest>
