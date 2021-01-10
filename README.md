@@ -7,6 +7,9 @@
 ###   📱 A kotlin native app helping you achieving your tasks, you can add, modify and complete task ! 
 ###   Soon on google play ! 
 
+###   Download APK : [![APK](https://img.shields.io/static/v1?label=GoalLifeHelper:&message=v0.1&color=blue)](https://github.com/TomLeCollegue/GoalLifeApp/releases/download/v0.1/GoalLifeHelper.v1.0.apk)
+
+
 ## `Features`
 * On your main Page you can see all your task and when they need to be completed
 <img src="https://github.com/TomLeCollegue/GoalLifeApp/blob/main/forReadme/Screenshot_1610294372.png?raw=true" alt="drawing" width="250" align="center" />
