@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_today.view.*
 class TodayFragment : Fragment(), TodayAdapter.OnItemClickListener {
 
     private val adapterTask  = TodayAdapter(App.listTask, this, App.applicationContext())
+    val db =  DataBaseHelper(App.applicationContext())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,16 +25,17 @@ class TodayFragment : Fragment(), TodayAdapter.OnItemClickListener {
         view.recyclerviewTask.adapter = adapterTask
         view.recyclerviewTask.layoutManager = LinearLayoutManager(context)
         view.recyclerviewTask.setHasFixedSize(true)
+        db.readData()
+        adapterTask.notifyDataSetChanged()
 
         // Inflate the layout for this fragment
         return view
     }
 
     override fun onItemClick(position: Int) {
-        Toast.makeText(context, "Item $position clicked", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(context, "Item $position clicked", Toast.LENGTH_SHORT).show()
         val clickedItem = App.listTask[position]
-        clickedItem.definition = "Clicked"
-        adapterTask.notifyItemChanged(position)
+
     }
 
 }

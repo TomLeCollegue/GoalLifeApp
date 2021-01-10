@@ -40,7 +40,22 @@ class TaskFragment : Fragment(), TaskAdapter.OnItemClickListener {
         view.recyclerviewTask.adapter = adapterTask
         view.recyclerviewTask.layoutManager = LinearLayoutManager(context)
         view.recyclerviewTask.setHasFixedSize(true)
-        adapterTask.notifyDataSetChanged()
+
+
+        /*val tastTodadd = Task("testWeek","test", Task.Frequency.WEEKLY)
+        tastTodadd.dateDone = "01/01/2021"
+        db.insertData(tastTodadd)
+
+        val tastTodadd1 = Task("testDays07","test", Task.Frequency.DAILY)
+        tastTodadd1.dateDone = "05/01/2021"
+        db.insertData(tastTodadd1)
+
+        val tastTodadd2 = Task("testDays","test", Task.Frequency.DAILY)
+        tastTodadd2.dateDone = "09/01/2021"
+        db.insertData(tastTodadd2)
+        db.readData()
+        adapterTask.notifyDataSetChanged()*/
+
 
         view.buttonAddTast.setOnClickListener(){
             showPopup(view)
@@ -114,6 +129,7 @@ class TaskFragment : Fragment(), TaskAdapter.OnItemClickListener {
 
         viewP.supprButton.isVisible = true
         viewP.titlepopup2.text = "Modifier un objectif"
+        viewP.buttonAdd.text = "Modifier"
         viewP.nameText.setText(task.objective)
         viewP.deffText.setText(task.definition)
 

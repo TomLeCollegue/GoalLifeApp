@@ -29,7 +29,7 @@ class TodayAdapter(
         val currentItem = list[position]
         holder.taskName.text = currentItem.objective
         holder.taskDef.text = currentItem.definition
-        holder.taskDate.text = currentItem.done
+        holder.taskDate.text = currentItem.needToBeDoneFor()
 
         when (currentItem.frequency) {
             Task.Frequency.DAILY -> {
@@ -59,7 +59,10 @@ class TodayAdapter(
         init {
             itemView.setOnClickListener(this)
             itemView.buttonDone.setOnClickListener(){
-                list[adapterPosition].definition = "blabla"
+                list[adapterPosition].resetDate()
+                val db =  DataBaseHelper(App.applicationContext())
+                db.modifTask(list[adapterPosition])
+                db.readData()
                 notifyDataSetChanged()
             }
         }

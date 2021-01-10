@@ -41,7 +41,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, DATABASEN
         contentValues.put(COL_FREQUENCY, task.frequency.toString())
 
 
-        contentValues.put(COL_DONE, task.done.toString())
+        contentValues.put(COL_DONE, task.dateDone.toString())
         val result = database.insert(TABLENAME, null, contentValues)
         if (result == (0).toLong()) {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
@@ -57,7 +57,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, DATABASEN
         contentValues.put(COL_NAME, task.objective)
         contentValues.put(COL_DEF, task.definition)
         contentValues.put(COL_FREQUENCY, task.frequency.toString())
-        contentValues.put(COL_DONE, task.done)
+        contentValues.put(COL_DONE, task.dateDone)
 
         val result = database.update(TABLENAME, contentValues, "$COL_ID = ${task.id}", null)
     }
@@ -78,7 +78,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, DATABASEN
                 val task = Task("","",Task.Frequency.WEEKLY)
                 task.objective = result.getString(result.getColumnIndex(COL_NAME))
                 task.definition = result.getString(result.getColumnIndex(COL_DEF)).toString()
-                task.done = result.getString(result.getColumnIndex(COL_DONE)).toString()
+                task.dateDone = result.getString(result.getColumnIndex(COL_DONE)).toString()
                 task.id = result.getString(result.getColumnIndex(COL_ID)).toInt()
 
                 when(result.getString(result.getColumnIndex(COL_FREQUENCY)).toString()){

@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                     mainImage.setImageResource(R.drawable.clipboard)
                 }
                 R.id.menu2 -> {
-                    title_home.text = "Aujourd'hui"
+                    title_home.text = "Aujourd'hui "
                     setFragment(TodayFragment())
                     mainImage.setImageResource(R.drawable.calendar)
                 }
