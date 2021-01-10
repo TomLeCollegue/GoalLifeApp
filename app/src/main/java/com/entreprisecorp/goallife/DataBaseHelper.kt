@@ -51,6 +51,22 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, DATABASEN
         }
     }
 
+    fun modifTask(task: Task) {
+        val database = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(COL_NAME, task.objective)
+        contentValues.put(COL_DEF, task.definition)
+        contentValues.put(COL_FREQUENCY, task.frequency.toString())
+        contentValues.put(COL_DONE, task.done)
+
+        val result = database.update(TABLENAME, contentValues, "$COL_ID = ${task.id}", null)
+    }
+
+    fun supprTast(task: Task) {
+        val database = this.writableDatabase
+        val result = database.delete(TABLENAME, "$COL_ID = ${task.id}", null)
+    }
+
     fun readData(): ArrayList<Task> {
         App.listTask.clear()
         val list: ArrayList<Task> = ArrayList()

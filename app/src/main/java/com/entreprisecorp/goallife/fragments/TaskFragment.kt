@@ -14,6 +14,7 @@ import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
@@ -111,6 +112,7 @@ class TaskFragment : Fragment(), TaskAdapter.OnItemClickListener {
         viewP.elevation = 5.0F;
         window.contentView = viewP
 
+        viewP.supprButton.isVisible = true
         viewP.titlepopup2.text = "Modifier un objectif"
         viewP.nameText.setText(task.objective)
         viewP.deffText.setText(task.definition)
@@ -131,7 +133,18 @@ class TaskFragment : Fragment(), TaskAdapter.OnItemClickListener {
         viewP.buttonAdd.setOnClickListener(){
             task.objective =  viewP.nameText.text.toString()
             task.definition = viewP.deffText.text.toString()
+
+            task.resetDate()
+            db.modifTask(task)
+            db.readData()
             adapterTask.notifyItemChanged(position)
+            window.dismiss()
+        }
+
+        viewP.supprButton.setOnClickListener(){
+            db.supprTast(task)
+            db.readData()
+            adapterTask.notifyDataSetChanged()
             window.dismiss()
         }
 

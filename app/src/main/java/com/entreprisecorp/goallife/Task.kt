@@ -22,5 +22,9 @@ public class Task (textObjective : String, textDefinition : String, frequency : 
         val formatter = SimpleDateFormat(format, locale)
         return formatter.format(this)
     }
+
+    fun resetDate(){
+        done = getInstance().time.toString("yyyy/MM/dd")
+    }
 }
 
