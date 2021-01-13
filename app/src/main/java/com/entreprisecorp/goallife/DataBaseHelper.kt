@@ -26,7 +26,7 @@ class DataBaseHelper(var context: Context) : SQLiteOpenHelper(context, DATABASEN
 
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val createTable = "CREATE IF NOT EXISTS TABLE " + TABLENAME + " (" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_NAME + " VARCHAR(256)," + COL_DEF + " VARCHAR(256)," + COL_DONE + " VARCHAR(256), " + COL_FREQUENCY + " VARCHAR(256))"
+        val createTable = "CREATE TABLE " + TABLENAME + " (" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_NAME + " VARCHAR(256)," + COL_DEF + " VARCHAR(256)," + COL_DONE + " VARCHAR(256), " + COL_FREQUENCY + " VARCHAR(256))"
         db?.execSQL(createTable)
     }
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
